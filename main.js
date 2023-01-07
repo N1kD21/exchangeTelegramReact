@@ -3,23 +3,13 @@
 const http = require('node:http');
 const cluster = require('node:cluster');
 const os = require('node:os');
+const fileReading = require('./lib/readFile.js');
+const html = fileReading('./lib/index.html');
 
 const PORT = 2000;
 
 const user = { name: 'jura', age: 22 };
 const pid = process.pid;
-const html = `<!DOCTYPE html>
-<html>
-<head>
-<title>Page Title</title>
-</head>
-<body>
-
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
-
-</body>
-</html>`;
 
 const routing = {
   '/': html,
@@ -31,8 +21,8 @@ const routing = {
 
 const types = {
   object: JSON.stringify,
-  string: (s) => s,
-  number: (n) => n.toString(),
+  string: s => s,
+  number: n => n.toString(),
   undefined: () => 'not found',
   function: (fn, par, client) => JSON.stringify(fn(client, par)),
 };

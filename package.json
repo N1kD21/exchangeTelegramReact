@@ -1,0 +1,30 @@
+{
+  "name": "exchangetelegramreact",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "directories": {
+    "lib": "lib",
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/N1kD21/exchangeTelegramReact.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/N1kD21/exchangeTelegramReact/issues"
+  },
+  "homepage": "https://github.com/N1kD21/exchangeTelegramReact#readme",
+  "devDependencies": {
+    "eslint": "^8.31.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-react": "^7.31.11",
+    "jest": "^29.3.1"
+  }
+}
