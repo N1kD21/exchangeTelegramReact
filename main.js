@@ -3,17 +3,12 @@
 const http = require('node:http');
 const cluster = require('node:cluster');
 const os = require('node:os');
-const fileReading = require('./lib/readFile.js');
-const html = fileReading('./lib/index.html');
-
 const PORT = 2000;
 
 const user = { name: 'jura', age: 22 };
 const pid = process.pid;
-
 const routing = {
-  '/': html,
-  '/homepage': 'welcome to homepage',
+  '/': 'welcome to homepage',
   '/user': user,
   '/user/name': () => user.name,
   '/user/age': () => user.age,
@@ -35,7 +30,7 @@ if (cluster.isMaster) {
 } else {
   const id = cluster.worker.id;
   console.log(`Worker: ${id}, pid: ${pid}, port: ${PORT}`);
-  http.createServer((req, res) => {
+  http.createServer(async (req, res) => {
     const data = routing[req.url];
     const type = typeof data;
     const serializer = types[type];
